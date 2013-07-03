@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+ 
+require 'rubygems'
+require 'grit'
+require 'rest-client'
+ 
+old_rev, new_rev, ref_name = STDIN.gets.split
+
+print "==============================\n"
+print "old_rev: " +  old_rev + "\n"
+print "new_rev: " + new_rev + "\n"
+print "ref_name: " + ref_name + "\n"
+print "==============================\n"
+
+repo = Grit::Repo.new(".")
+# this is the head so we expect only one commit
+commit = repo.commits(new_rev)[0]
+
+print "==============================\n"
+print commit.message + "\n"
+print "==============================\n"
+
+
+print "==============================\n"
+print "Exec rest call\n"
+print "==============================\n"
+
+response = RestClient.get 'http://localhost:4567/transaction'
+
+print "==============================\n"
+print "Finished rest call\n"
+print "==============================\n"
+

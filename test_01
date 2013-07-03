@@ -1,0 +1,19 @@
+#!/bin/bash
+
+./init_environment
+
+# enter test environment
+cd test_environment
+
+# add a commit into the test repo
+git clone file://`pwd`/repo_1.git
+cd repo_1
+echo "sometext" >> test.txt
+git add .
+git commit -m"blub"
+git push
+
+# exiting test environment
+cd ../..
+
+./exit_environment
