@@ -46,12 +46,12 @@ cd ..
 rm -rf repo_models
 
 # add post-commit repos
-cp ../post-receive repo_1.git/hooks/
-chmod +x repo_1.git/hooks/post-receive
-cp ../post-receive repo_2.git/hooks/
-chmod +x repo_2.git/hooks/post-receive
-cp ../post-receive repo_models.git/hooks/
-chmod +x repo_models.git/hooks/post-receive
+cp ../pre-receive repo_1.git/hooks/
+chmod +x repo_1.git/hooks/pre-receive
+cp ../pre-receive repo_2.git/hooks/
+chmod +x repo_2.git/hooks/pre-receive
+cp ../pre-receive repo_models.git/hooks/
+chmod +x repo_models.git/hooks/pre-receive
 
 # exit test environment
 cd ..
