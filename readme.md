@@ -1,3 +1,5 @@
+The idea is to get a VERY simple prototypic approach showing if we can do the core properties of the openengsb in a better and more efficient way
+
 Preconditions
 =================
 
