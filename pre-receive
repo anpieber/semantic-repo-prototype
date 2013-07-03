@@ -27,7 +27,7 @@ puts commit.message + ""
 commit.message.each_line do |line| 
   if line.start_with?("Transaction-Id:") 
     line["Transaction-Id:"] = ""
-    line.strip
+    line = line.strip
     transactionId = line
     puts "!!!!!!!!!!!!!found " + transactionId + "!!!!!!!!!!!!!!!"
   end
@@ -42,7 +42,7 @@ puts "=============================="
 puts "Exec rest call"
 puts "=============================="
 
-response = RestClient.get 'http://localhost:4567/transaction?repository=' + repo_name + '&commit=' + new_rev + '&transaction='
+response = RestClient.get 'http://localhost:4567/transaction?repository=' + repo_name + '&commit=' + new_rev + '&transaction=' + transactionId
 
 puts "=============================="
 puts "Finished rest call"
