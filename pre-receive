@@ -6,30 +6,41 @@ require 'rest-client'
  
 old_rev, new_rev, ref_name = STDIN.gets.split
 
-print "==============================\n"
-print "old_rev: " +  old_rev + "\n"
-print "new_rev: " + new_rev + "\n"
-print "ref_name: " + ref_name + "\n"
-print "==============================\n"
+repo_name = File.basename(Dir.getwd)
+
+puts "=============================="
+puts "repo_name: " + repo_name + ""
+puts "old_rev: " +  old_rev + ""
+puts "new_rev: " + new_rev + ""
+puts "ref_name: " + ref_name + ""
+puts "=============================="
 
 repo = Grit::Repo.new(".")
 # this is the head so we expect only one commit
-commit = repo.commits(new_rev)[0]
+commit = repo.commits(new_rev,1).last
 
-print "==============================\n"
-print commit.message + "\n"
-print "==============================\n"
+puts "=============================="
+puts commit.id + ""
+puts commit.message + ""
+commit.message.each_line do |line| 
+  if line.start_with?("Transaction-Id:") 
+    line["Transaction-Id:"] = ""
+    line.strip
+    puts "!!!!!!!!!!!!!found " + line + "!!!!!!!!!!!!!!!"
+  end
+end
+puts "=============================="
 
 
-print "==============================\n"
-print "Exec rest call\n"
-print "==============================\n"
+puts "=============================="
+puts "Exec rest call"
+puts "=============================="
 
-response = RestClient.get 'http://localhost:4567/transaction'
+response = RestClient.get 'http://localhost:4567/transaction?repository=' + repo_name + '&commit=' + new_rev + ''
 
-print "==============================\n"
-print "Finished rest call\n"
-print "==============================\n"
+puts "=============================="
+puts "Finished rest call"
+puts "=============================="
 
 #exit 1
 

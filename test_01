@@ -10,7 +10,9 @@ git clone file://`pwd`/repo_1.git
 cd repo_1
 echo "sometext" >> test.txt
 git add .
-git commit -m"blub"
+# the transaction id should be added by a pre-commit hook if not already set...
+git commit -m"some_commit_message
+Transaction-Id: 123"
 git push
 
 # exiting test environment
