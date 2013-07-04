@@ -8,5 +8,6 @@ get '/transaction' do
     puts "repository: " + params["repository"]
     puts "commitId: " + params["commit"]
     puts "transaction: " + params["transaction"]
+    puts "parents: " + params["parents"]
     puts "=========== SERVER DATA ================"
 end

@@ -23,7 +23,8 @@ cd ..
 # provide initial commit
 git clone file://`pwd`/repo_1.git
 cd repo_1
-git commit --allow-empty -m"initial commit"
+git commit --allow-empty -m"initial commit
+Transaction-Id: 1"
 git remote add origin file://`pwd`/repo_1.git
 git push origin master
 cd ..
@@ -31,7 +32,8 @@ rm -rf repo_1
 
 git clone file://`pwd`/repo_2.git
 cd repo_2
-git commit --allow-empty -m"initial commit"
+git commit --allow-empty -m"initial commit
+Transaction-Id: 1"
 git remote add origin file://`pwd`/repo_2.git
 git push origin master
 cd ..
@@ -39,7 +41,8 @@ rm -rf repo_2
 
 git clone file://`pwd`/repo_models.git
 cd repo_models
-git commit --allow-empty -m"initial commit"
+git commit --allow-empty -m"initial commit
+Transaction-Id: 1"
 git remote add origin file://`pwd`/repo_models.git
 git push origin master
 cd ..
